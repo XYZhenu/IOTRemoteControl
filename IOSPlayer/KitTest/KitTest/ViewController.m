@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import <StreamPlayer.h>
 @interface ViewController ()
-@property (nonatomic,strong)StreamPlayer* player;
+@property (nonatomic,strong) StreamPlayer* player;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @end
 

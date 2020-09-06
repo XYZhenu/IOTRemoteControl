@@ -11,19 +11,6 @@
 		181AEABA1E0A5E3C00D895FE /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181AEAB91E0A5E3C00D895FE /* GameController.framework */; };
 		181AEABC1E0A5E6800D895FE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 181AEABB1E0A5E6800D895FE /* libicucore.tbd */; };
 		181AEABE1E0A5E7D00D895FE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 181AEABD1E0A5E7D00D895FE /* libz.tbd */; };
-		188AF7E31FF4A045003FC4E0 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 188AF7D41FF4A045003FC4E0 /* Common.m */; };
-		188AF7E41FF4A045003FC4E0 /* hud_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7D51FF4A045003FC4E0 /* hud_error.png */; };
-		188AF7E51FF4A045003FC4E0 /* hud_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7D61FF4A045003FC4E0 /* hud_error@2x.png */; };
-		188AF7E61FF4A045003FC4E0 /* hud_error@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7D71FF4A045003FC4E0 /* hud_error@3x.png */; };
-		188AF7E71FF4A045003FC4E0 /* hud_info.png in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7D81FF4A045003FC4E0 /* hud_info.png */; };
-		188AF7E81FF4A045003FC4E0 /* hud_info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7D91FF4A045003FC4E0 /* hud_info@2x.png */; };
-		188AF7E91FF4A045003FC4E0 /* hud_info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7DA1FF4A045003FC4E0 /* hud_info@3x.png */; };
-		188AF7EA1FF4A045003FC4E0 /* hud_success.png in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7DB1FF4A045003FC4E0 /* hud_success.png */; };
-		188AF7EB1FF4A045003FC4E0 /* hud_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7DC1FF4A045003FC4E0 /* hud_success@2x.png */; };
-		188AF7EC1FF4A045003FC4E0 /* hud_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7DD1FF4A045003FC4E0 /* hud_success@3x.png */; };
-		188AF7ED1FF4A045003FC4E0 /* NSString+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 188AF7DF1FF4A045003FC4E0 /* NSString+Valid.m */; };
-		188AF7EE1FF4A045003FC4E0 /* WaitingHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 188AF7E11FF4A045003FC4E0 /* WaitingHUD.m */; };
-		188AF7EF1FF4A045003FC4E0 /* WaitingHUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188AF7E21FF4A045003FC4E0 /* WaitingHUD.xib */; };
 		18C176F21E2CCC6300CAC07D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C176F11E2CCC6300CAC07D /* AudioToolbox.framework */; };
 		18C176F41E2CCC8B00CAC07D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C176F31E2CCC8B00CAC07D /* VideoToolbox.framework */; };
 		18C176F61E2CCCB000CAC07D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C176F51E2CCCB000CAC07D /* CoreMedia.framework */; };
@@ -35,6 +22,7 @@
 		24B6BF3C1DAF3B72004AA0DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24B6BF3B1DAF3B72004AA0DB /* Assets.xcassets */; };
 		24B6BF3F1DAF3B72004AA0DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B6BF3D1DAF3B72004AA0DB /* LaunchScreen.storyboard */; };
 		24B6BF4D1DAF3CCC004AA0DB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B6BF4C1DAF3CCC004AA0DB /* libc++.tbd */; };
+		AC5404A42504D9DC0079F9C4 /* JoyStick.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5404A32504D9DC0079F9C4 /* JoyStick.m */; };
 		AC7EAA5924D06ED400648C6E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7EAA5824D06ED400648C6E /* ViewController.m */; };
 		AC7EAA5B24D074C200648C6E /* libMediaPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7EAA5A24D074C200648C6E /* libMediaPlayer.a */; };
 /* End PBXBuildFile section */
@@ -45,22 +33,6 @@
 		181AEABB1E0A5E6800D895FE /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		181AEABD1E0A5E7D00D895FE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		181AEABF1E0A5F1E00D895FE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		188AF7D31FF4A045003FC4E0 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
-		188AF7D41FF4A045003FC4E0 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
-		188AF7D51FF4A045003FC4E0 /* hud_error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_error.png; sourceTree = "<group>"; };
-		188AF7D61FF4A045003FC4E0 /* hud_error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud_error@2x.png"; sourceTree = "<group>"; };
-		188AF7D71FF4A045003FC4E0 /* hud_error@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud_error@3x.png"; sourceTree = "<group>"; };
-		188AF7D81FF4A045003FC4E0 /* hud_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_info.png; sourceTree = "<group>"; };
-		188AF7D91FF4A045003FC4E0 /* hud_info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud_info@2x.png"; sourceTree = "<group>"; };
-		188AF7DA1FF4A045003FC4E0 /* hud_info@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud_info@3x.png"; sourceTree = "<group>"; };
-		188AF7DB1FF4A045003FC4E0 /* hud_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_success.png; sourceTree = "<group>"; };
-		188AF7DC1FF4A045003FC4E0 /* hud_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud_success@2x.png"; sourceTree = "<group>"; };
-		188AF7DD1FF4A045003FC4E0 /* hud_success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud_success@3x.png"; sourceTree = "<group>"; };
-		188AF7DE1FF4A045003FC4E0 /* NSString+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Valid.h"; sourceTree = "<group>"; };
-		188AF7DF1FF4A045003FC4E0 /* NSString+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Valid.m"; sourceTree = "<group>"; };
-		188AF7E01FF4A045003FC4E0 /* WaitingHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingHUD.h; sourceTree = "<group>"; };
-		188AF7E11FF4A045003FC4E0 /* WaitingHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingHUD.m; sourceTree = "<group>"; };
-		188AF7E21FF4A045003FC4E0 /* WaitingHUD.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitingHUD.xib; sourceTree = "<group>"; };
 		188AF7F31FF4C382003FC4E0 /* libMediaPlayer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMediaPlayer.a; path = "../../../Library/Developer/Xcode/DerivedData/IOSPlayer-dtyhujhmsoqbkjdagiqhliadyqcb/Build/Products/Debug-iphoneos/libMediaPlayer.a"; sourceTree = "<group>"; };
 		18C176F11E2CCC6300CAC07D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		18C176F31E2CCC8B00CAC07D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
@@ -75,6 +47,8 @@
 		24B6BF3E1DAF3B72004AA0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24B6BF401DAF3B72004AA0DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B6BF4C1DAF3CCC004AA0DB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		AC5404A22504D9DC0079F9C4 /* JoyStick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JoyStick.h; sourceTree = "<group>"; };
+		AC5404A32504D9DC0079F9C4 /* JoyStick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JoyStick.m; sourceTree = "<group>"; };
 		AC7EAA5724D06ED400648C6E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AC7EAA5824D06ED400648C6E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AC7EAA5A24D074C200648C6E /* libMediaPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMediaPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,29 +83,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		188AF7D21FF4A045003FC4E0 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				188AF7D31FF4A045003FC4E0 /* Common.h */,
-				188AF7D41FF4A045003FC4E0 /* Common.m */,
-				188AF7D51FF4A045003FC4E0 /* hud_error.png */,
-				188AF7D61FF4A045003FC4E0 /* hud_error@2x.png */,
-				188AF7D71FF4A045003FC4E0 /* hud_error@3x.png */,
-				188AF7D81FF4A045003FC4E0 /* hud_info.png */,
-				188AF7D91FF4A045003FC4E0 /* hud_info@2x.png */,
-				188AF7DA1FF4A045003FC4E0 /* hud_info@3x.png */,
-				188AF7DB1FF4A045003FC4E0 /* hud_success.png */,
-				188AF7DC1FF4A045003FC4E0 /* hud_success@2x.png */,
-				188AF7DD1FF4A045003FC4E0 /* hud_success@3x.png */,
-				188AF7DE1FF4A045003FC4E0 /* NSString+Valid.h */,
-				188AF7DF1FF4A045003FC4E0 /* NSString+Valid.m */,
-				188AF7E01FF4A045003FC4E0 /* WaitingHUD.h */,
-				188AF7E11FF4A045003FC4E0 /* WaitingHUD.m */,
-				188AF7E21FF4A045003FC4E0 /* WaitingHUD.xib */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
 		188C497E1DD95665001B186D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,11 +129,12 @@
 		24B6BF2E1DAF3B72004AA0DB /* KitTest */ = {
 			isa = PBXGroup;
 			children = (
-				188AF7D21FF4A045003FC4E0 /* Tools */,
 				24B6BF321DAF3B72004AA0DB /* AppDelegate.h */,
 				24B6BF331DAF3B72004AA0DB /* AppDelegate.m */,
 				AC7EAA5724D06ED400648C6E /* ViewController.h */,
 				AC7EAA5824D06ED400648C6E /* ViewController.m */,
+				AC5404A22504D9DC0079F9C4 /* JoyStick.h */,
+				AC5404A32504D9DC0079F9C4 /* JoyStick.m */,
 				24B6BF381DAF3B72004AA0DB /* Main.storyboard */,
 				24B6BF3B1DAF3B72004AA0DB /* Assets.xcassets */,
 				24B6BF3D1DAF3B72004AA0DB /* LaunchScreen.storyboard */,
@@ -271,19 +223,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188AF7E81FF4A045003FC4E0 /* hud_info@2x.png in Resources */,
-				188AF7E51FF4A045003FC4E0 /* hud_error@2x.png in Resources */,
 				24B6BF3F1DAF3B72004AA0DB /* LaunchScreen.storyboard in Resources */,
-				188AF7E91FF4A045003FC4E0 /* hud_info@3x.png in Resources */,
 				24B6BF3C1DAF3B72004AA0DB /* Assets.xcassets in Resources */,
-				188AF7EF1FF4A045003FC4E0 /* WaitingHUD.xib in Resources */,
-				188AF7EC1FF4A045003FC4E0 /* hud_success@3x.png in Resources */,
-				188AF7E41FF4A045003FC4E0 /* hud_error.png in Resources */,
-				188AF7EB1FF4A045003FC4E0 /* hud_success@2x.png in Resources */,
-				188AF7E61FF4A045003FC4E0 /* hud_error@3x.png in Resources */,
 				24B6BF3A1DAF3B72004AA0DB /* Main.storyboard in Resources */,
-				188AF7E71FF4A045003FC4E0 /* hud_info.png in Resources */,
-				188AF7EA1FF4A045003FC4E0 /* hud_success.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,11 +236,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188AF7E31FF4A045003FC4E0 /* Common.m in Sources */,
 				AC7EAA5924D06ED400648C6E /* ViewController.m in Sources */,
+				AC5404A42504D9DC0079F9C4 /* JoyStick.m in Sources */,
 				24B6BF341DAF3B72004AA0DB /* AppDelegate.m in Sources */,
-				188AF7EE1FF4A045003FC4E0 /* WaitingHUD.m in Sources */,
-				188AF7ED1FF4A045003FC4E0 /* NSString+Valid.m in Sources */,
 				24B6BF311DAF3B72004AA0DB /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
