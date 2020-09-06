@@ -34,7 +34,7 @@
     [self.stickBgView.layer setMasksToBounds:YES];
     [self.stickBgView.layer setCornerRadius:frame.size.width/2];
     
-    self.stickView = [[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width/4, frame.size.height/4, frame.size.width/2, frame.size.height/2)];
+    self.stickView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width/4, frame.size.height/4, frame.size.width/2, frame.size.height/2)];
     [self addSubview:self.stickView];
     
     self.stickView.backgroundColor = [UIColor redColor];
@@ -46,13 +46,12 @@
     self.stickBgView.frame = self.bounds;
 }
 
--(void)setCallBack:(void(^)(CGFloat,CGFloat))callback {
+- (void)setCallBack:(void(^)(CGFloat,CGFloat))callback {
     self.callback = callback;
 }
 
 
-- (CGPoint)callinelength:(CGPoint)point
-{
+- (CGPoint)callinelength:(CGPoint)point {
     CGFloat centrex = self.frame.size.width/2;          //圆心X
     CGFloat centrey = self.frame.size.height/2;         //圆心Y
     CGFloat radius = self.frame.size.width/2;           //半径
@@ -95,29 +94,30 @@
     }
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint pointBegan = [touch locationInView:self];
     [self updatePosition:[self callinelength:pointBegan]];
 }
 
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint pointBegan = [touch locationInView:self];
     [self updatePosition:[self callinelength:pointBegan]];
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self updatePosition:CGPointMake(self.frame.size.width/2, self.frame.size.height/2)];
 }
 
--(void)updatePosition:(CGPoint)position {
+- (void)updatePosition:(CGPoint)position {
     self.stickView.center = position;
     if (self.callback) {
-        
+        CGFloat radius = self.frame.size.width/2;
+        CGFloat xRate = (position.x - radius)/radius;
+        CGFloat yRate = (position.y - radius)/radius;
+        self.callback(xRate, yRate);
     }
 }
+
 @end
