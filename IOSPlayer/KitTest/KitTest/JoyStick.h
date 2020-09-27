@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JoyStick : UIView
--(void)setCallBack:(void(^)(CGFloat,CGFloat))callback;
+-(void)setCallBack:(void(^)(CGFloat x,CGFloat y))callback;
 @end
 
 NS_ASSUME_NONNULL_END
