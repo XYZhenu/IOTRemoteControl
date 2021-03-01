@@ -56,7 +56,7 @@
         
     }, (__bridge void*)weakSelf);
     
-    mk_player_set_on_data(_player, [](void *user_data,int track_type,int codec_id,void *data,int len,uint32_t dts,uint32_t pts){
+    mk_player_set_on_data(_player, [](void *user_data,int track_type,int codec_id,void *data,size_t len,uint32_t dts,uint32_t pts){
         StreamPlayer* weakSelf = (__bridge StreamPlayer*)user_data;
         if (!weakSelf) {
             return;

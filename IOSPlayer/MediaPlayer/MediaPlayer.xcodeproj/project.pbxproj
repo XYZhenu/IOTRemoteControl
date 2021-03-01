@@ -50,25 +50,25 @@
 		18D3DD231E1606E6004B906F /* MediaDecoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18D3DD221E1606E6004B906F /* MediaDecoder.mm */; };
 		18D82D5C1EAF3C5F00DCCD28 /* WeakArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D5B1EAF3C5F00DCCD28 /* WeakArray.m */; };
 		2469519E1DB4A7E400D4600C /* AutoAudioPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2469519D1DB4A7E400D4600C /* AutoAudioPlayer.mm */; };
-		AC7EAA4424C9BD5600648C6E /* libflv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7EAA4324C9BD5600648C6E /* libflv.a */; };
-		AC7EAA4624C9BD5600648C6E /* libmk_api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7EAA4524C9BD5600648C6E /* libmk_api.a */; };
-		AC7EAA4824C9BD5600648C6E /* libmov.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7EAA4724C9BD5600648C6E /* libmov.a */; };
-		AC7EAA4A24C9BD5600648C6E /* libmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7EAA4924C9BD5600648C6E /* libmpeg.a */; };
-		AC7EAA4C24C9BD5600648C6E /* librtp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7EAA4B24C9BD5600648C6E /* librtp.a */; };
-		AC7EAA4E24C9BD5600648C6E /* libzlmediakit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7EAA4D24C9BD5600648C6E /* libzlmediakit.a */; };
-		AC7EAA5024C9BD5600648C6E /* libzltoolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7EAA4F24C9BD5600648C6E /* libzltoolkit.a */; };
 		AC7EAA5324CC197400648C6E /* H264HwDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7EAA5224CC197400648C6E /* H264HwDecoder.m */; };
 		AC7EAA5624CF25B600648C6E /* StreamPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7EAA5524CF25B600648C6E /* StreamPlayer.mm */; };
+		ACEB841225EBA545006F5F79 /* libmov.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEB840C25EBA545006F5F79 /* libmov.a */; };
+		ACEB841325EBA545006F5F79 /* libzltoolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEB840D25EBA545006F5F79 /* libzltoolkit.a */; };
+		ACEB841425EBA545006F5F79 /* libmk_api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEB840E25EBA545006F5F79 /* libmk_api.a */; };
+		ACEB841525EBA545006F5F79 /* libmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEB840F25EBA545006F5F79 /* libmpeg.a */; };
+		ACEB841625EBA545006F5F79 /* libflv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEB841025EBA545006F5F79 /* libflv.a */; };
+		ACEB841725EBA545006F5F79 /* libzlmediakit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEB841125EBA545006F5F79 /* libzlmediakit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		247F08C41DB06CCE00AA7599 /* CopyFiles */ = {
+		247F08C41DB06CCE00AA7599 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -177,8 +177,6 @@
 		188AF7A81FF49951003FC4E0 /* syntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syntax.h; sourceTree = "<group>"; };
 		188AF7A91FF49951003FC4E0 /* tns.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tns.c; sourceTree = "<group>"; };
 		188AF7AA1FF49951003FC4E0 /* tns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tns.h; sourceTree = "<group>"; };
-		188AF7F51FF4C395003FC4E0 /* libZLMediaKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZLMediaKit.a; path = "../../../Library/Developer/Xcode/DerivedData/IOSPlayer-dtyhujhmsoqbkjdagiqhliadyqcb/Build/Products/Debug-iphoneos/libZLMediaKit.a"; sourceTree = "<group>"; };
-		188AF7F71FF4C397003FC4E0 /* libZLToolKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZLToolKit.a; path = "../../../Library/Developer/Xcode/DerivedData/IOSPlayer-dtyhujhmsoqbkjdagiqhliadyqcb/Build/Products/Debug-iphoneos/libZLToolKit.a"; sourceTree = "<group>"; };
 		18C176E61E2CC47300CAC07D /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
 		18C176E71E2CC47300CAC07D /* GLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLView.mm; sourceTree = "<group>"; };
 		18D3DD211E1606E6004B906F /* MediaDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaDecoder.h; sourceTree = "<group>"; };
@@ -188,17 +186,16 @@
 		2469519C1DB4A7E400D4600C /* AutoAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoAudioPlayer.h; sourceTree = "<group>"; };
 		2469519D1DB4A7E400D4600C /* AutoAudioPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AutoAudioPlayer.mm; sourceTree = "<group>"; };
 		247F08C61DB06CCE00AA7599 /* libMediaPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMediaPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC7EAA4324C9BD5600648C6E /* libflv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libflv.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC7EAA4524C9BD5600648C6E /* libmk_api.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libmk_api.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC7EAA4724C9BD5600648C6E /* libmov.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libmov.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC7EAA4924C9BD5600648C6E /* libmpeg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libmpeg.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC7EAA4B24C9BD5600648C6E /* librtp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librtp.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC7EAA4D24C9BD5600648C6E /* libzlmediakit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libzlmediakit.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC7EAA4F24C9BD5600648C6E /* libzltoolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libzltoolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7EAA5124CC197400648C6E /* H264HwDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = H264HwDecoder.h; sourceTree = "<group>"; };
 		AC7EAA5224CC197400648C6E /* H264HwDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = H264HwDecoder.m; sourceTree = "<group>"; };
 		AC7EAA5424CF25B600648C6E /* StreamPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamPlayer.h; sourceTree = "<group>"; };
 		AC7EAA5524CF25B600648C6E /* StreamPlayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = StreamPlayer.mm; sourceTree = "<group>"; };
+		ACEB840C25EBA545006F5F79 /* libmov.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmov.a; path = ../SDKs/libmov.a; sourceTree = "<group>"; };
+		ACEB840D25EBA545006F5F79 /* libzltoolkit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzltoolkit.a; path = ../SDKs/libzltoolkit.a; sourceTree = "<group>"; };
+		ACEB840E25EBA545006F5F79 /* libmk_api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmk_api.a; path = ../SDKs/libmk_api.a; sourceTree = "<group>"; };
+		ACEB840F25EBA545006F5F79 /* libmpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpeg.a; path = ../SDKs/libmpeg.a; sourceTree = "<group>"; };
+		ACEB841025EBA545006F5F79 /* libflv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libflv.a; path = ../SDKs/libflv.a; sourceTree = "<group>"; };
+		ACEB841125EBA545006F5F79 /* libzlmediakit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzlmediakit.a; path = ../SDKs/libzlmediakit.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,13 +203,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC7EAA4424C9BD5600648C6E /* libflv.a in Frameworks */,
-				AC7EAA4624C9BD5600648C6E /* libmk_api.a in Frameworks */,
-				AC7EAA4824C9BD5600648C6E /* libmov.a in Frameworks */,
-				AC7EAA4A24C9BD5600648C6E /* libmpeg.a in Frameworks */,
-				AC7EAA4C24C9BD5600648C6E /* librtp.a in Frameworks */,
-				AC7EAA4E24C9BD5600648C6E /* libzlmediakit.a in Frameworks */,
-				AC7EAA5024C9BD5600648C6E /* libzltoolkit.a in Frameworks */,
+				ACEB841225EBA545006F5F79 /* libmov.a in Frameworks */,
+				ACEB841325EBA545006F5F79 /* libzltoolkit.a in Frameworks */,
+				ACEB841425EBA545006F5F79 /* libmk_api.a in Frameworks */,
+				ACEB841525EBA545006F5F79 /* libmpeg.a in Frameworks */,
+				ACEB841625EBA545006F5F79 /* libflv.a in Frameworks */,
+				ACEB841725EBA545006F5F79 /* libzlmediakit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,15 +218,12 @@
 		1801DD531FF4971D00484565 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AC7EAA4324C9BD5600648C6E /* libflv.a */,
-				AC7EAA4524C9BD5600648C6E /* libmk_api.a */,
-				AC7EAA4724C9BD5600648C6E /* libmov.a */,
-				AC7EAA4924C9BD5600648C6E /* libmpeg.a */,
-				AC7EAA4B24C9BD5600648C6E /* librtp.a */,
-				AC7EAA4D24C9BD5600648C6E /* libzlmediakit.a */,
-				AC7EAA4F24C9BD5600648C6E /* libzltoolkit.a */,
-				188AF7F71FF4C397003FC4E0 /* libZLToolKit.a */,
-				188AF7F51FF4C395003FC4E0 /* libZLMediaKit.a */,
+				ACEB841025EBA545006F5F79 /* libflv.a */,
+				ACEB840E25EBA545006F5F79 /* libmk_api.a */,
+				ACEB840C25EBA545006F5F79 /* libmov.a */,
+				ACEB840F25EBA545006F5F79 /* libmpeg.a */,
+				ACEB841125EBA545006F5F79 /* libzlmediakit.a */,
+				ACEB840D25EBA545006F5F79 /* libzltoolkit.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -415,7 +408,7 @@
 			buildPhases = (
 				247F08C21DB06CCE00AA7599 /* Sources */,
 				247F08C31DB06CCE00AA7599 /* Frameworks */,
-				247F08C41DB06CCE00AA7599 /* CopyFiles */,
+				247F08C41DB06CCE00AA7599 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -610,6 +603,7 @@
 					"$(SRCROOT)/../../ZLMediaKit/api/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../SDKs";
 				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -636,6 +630,7 @@
 					"$(SRCROOT)/../../ZLMediaKit/api/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../SDKs";
 				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
