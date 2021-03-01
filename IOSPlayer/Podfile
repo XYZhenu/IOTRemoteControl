@@ -1,0 +1,12 @@
+workspace 'IOSPlayer.xcworkspace'
+use_frameworks!
+target 'XYRemoterKit' do
+    platform :ios, '9.0'
+    project 'XYRemoter/XYRemoter.xcodeproj'
+    pod 'CocoaMQTT' 
+end
+target 'XYRemoter' do
+    platform :ios, '9.0'
+    project 'XYRemoter/XYRemoter.xcodeproj'
+    pod 'CocoaMQTT'
+end
