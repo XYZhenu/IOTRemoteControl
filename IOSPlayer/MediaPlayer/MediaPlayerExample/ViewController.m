@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <StreamPlayer.h>
+@import MediaPlayerKit;
 @interface ViewController ()
 @property (nonatomic,strong) StreamPlayer* player;
 @property (weak, nonatomic) IBOutlet UITextField *textField;

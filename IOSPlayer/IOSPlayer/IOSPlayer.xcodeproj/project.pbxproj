@@ -3,26 +3,42 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1980010B25EDE0C100BA4C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1980010A25EDE0C100BA4C76 /* AppDelegate.swift */; };
-		1980010D25EDE0C100BA4C76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1980010C25EDE0C100BA4C76 /* SceneDelegate.swift */; };
-		1980010F25EDE0C100BA4C76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1980010E25EDE0C100BA4C76 /* ContentView.swift */; };
 		1980011125EDE0C300BA4C76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1980011025EDE0C300BA4C76 /* Assets.xcassets */; };
 		1980011425EDE0C300BA4C76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1980011325EDE0C300BA4C76 /* Preview Assets.xcassets */; };
 		1980011725EDE0C300BA4C76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1980011525EDE0C300BA4C76 /* LaunchScreen.storyboard */; };
-		1980012025EDE1A700BA4C76 /* libMediaPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1980011F25EDE1A700BA4C76 /* libMediaPlayer.a */; };
-		1980012225EDE1A700BA4C76 /* XYRemoterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1980012125EDE1A700BA4C76 /* XYRemoterKit.framework */; };
 		1980012425EE36DA00BA4C76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1980012325EE36DA00BA4C76 /* Main.storyboard */; };
+		AC240A9D25EE6AB8009875C8 /* XYRemoterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1980012125EDE1A700BA4C76 /* XYRemoterKit.framework */; };
+		AC240A9E25EE6AB8009875C8 /* XYRemoterKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1980012125EDE1A700BA4C76 /* XYRemoterKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC240AA725EE6BB0009875C8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC240AA625EE6BB0009875C8 /* PlayerViewController.swift */; };
+		AC240CE725EE7270009875C8 /* MediaPlayerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC240CE625EE7270009875C8 /* MediaPlayerKit.framework */; };
+		AC240CE825EE7271009875C8 /* MediaPlayerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC240CE625EE7270009875C8 /* MediaPlayerKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F1CA0ACCD82C38ED4BBB8286 /* Pods_IOSPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08E92B1D07BB0F9477F2BEA2 /* Pods_IOSPlayer.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AC240A9F25EE6AB8009875C8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AC240A9E25EE6AB8009875C8 /* XYRemoterKit.framework in Embed Frameworks */,
+				AC240CE825EE7271009875C8 /* MediaPlayerKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		08E92B1D07BB0F9477F2BEA2 /* Pods_IOSPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1980010725EDE0C100BA4C76 /* IOSPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1980010A25EDE0C100BA4C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1980010C25EDE0C100BA4C76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1980010E25EDE0C100BA4C76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1980011025EDE0C300BA4C76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1980011325EDE0C300BA4C76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1980011625EDE0C300BA4C76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +46,10 @@
 		1980011F25EDE1A700BA4C76 /* libMediaPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMediaPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1980012125EDE1A700BA4C76 /* XYRemoterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XYRemoterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1980012325EE36DA00BA4C76 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8EBD665EC767F616C4F1BFFA /* Pods-IOSPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSPlayer.release.xcconfig"; path = "Target Support Files/Pods-IOSPlayer/Pods-IOSPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		AC240AA625EE6BB0009875C8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		AC240CE625EE7270009875C8 /* MediaPlayerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MediaPlayerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24B65C9DE0C8E90F61ACFC0 /* Pods-IOSPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSPlayer.debug.xcconfig"; path = "Target Support Files/Pods-IOSPlayer/Pods-IOSPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,8 +57,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1980012025EDE1A700BA4C76 /* libMediaPlayer.a in Frameworks */,
-				1980012225EDE1A700BA4C76 /* XYRemoterKit.framework in Frameworks */,
+				AC240CE725EE7270009875C8 /* MediaPlayerKit.framework in Frameworks */,
+				AC240A9D25EE6AB8009875C8 /* XYRemoterKit.framework in Frameworks */,
+				F1CA0ACCD82C38ED4BBB8286 /* Pods_IOSPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +72,7 @@
 				1980010925EDE0C100BA4C76 /* IOSPlayer */,
 				1980010825EDE0C100BA4C76 /* Products */,
 				1980011E25EDE1A700BA4C76 /* Frameworks */,
+				BD901A0B4F4F1BEB59ECE053 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,8 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				1980010A25EDE0C100BA4C76 /* AppDelegate.swift */,
-				1980010C25EDE0C100BA4C76 /* SceneDelegate.swift */,
-				1980010E25EDE0C100BA4C76 /* ContentView.swift */,
+				AC240AA625EE6BB0009875C8 /* PlayerViewController.swift */,
 				1980012325EE36DA00BA4C76 /* Main.storyboard */,
 				1980011025EDE0C300BA4C76 /* Assets.xcassets */,
 				1980011525EDE0C300BA4C76 /* LaunchScreen.storyboard */,
@@ -88,10 +109,22 @@
 		1980011E25EDE1A700BA4C76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC240CE625EE7270009875C8 /* MediaPlayerKit.framework */,
 				1980011F25EDE1A700BA4C76 /* libMediaPlayer.a */,
 				1980012125EDE1A700BA4C76 /* XYRemoterKit.framework */,
+				08E92B1D07BB0F9477F2BEA2 /* Pods_IOSPlayer.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD901A0B4F4F1BEB59ECE053 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D24B65C9DE0C8E90F61ACFC0 /* Pods-IOSPlayer.debug.xcconfig */,
+				8EBD665EC767F616C4F1BFFA /* Pods-IOSPlayer.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,9 +134,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1980011B25EDE0C300BA4C76 /* Build configuration list for PBXNativeTarget "IOSPlayer" */;
 			buildPhases = (
+				38BF14C7383419E7C26AFDA0 /* [CP] Check Pods Manifest.lock */,
 				1980010325EDE0C100BA4C76 /* Sources */,
 				1980010425EDE0C100BA4C76 /* Frameworks */,
 				1980010525EDE0C100BA4C76 /* Resources */,
+				AC240A9F25EE6AB8009875C8 /* Embed Frameworks */,
+				41FC594E6A9CFEE0958534E6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,14 +197,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38BF14C7383419E7C26AFDA0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IOSPlayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41FC594E6A9CFEE0958534E6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IOSPlayer/Pods-IOSPlayer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IOSPlayer/Pods-IOSPlayer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IOSPlayer/Pods-IOSPlayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1980010325EDE0C100BA4C76 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1980010B25EDE0C100BA4C76 /* AppDelegate.swift in Sources */,
-				1980010D25EDE0C100BA4C76 /* SceneDelegate.swift in Sources */,
-				1980010F25EDE0C100BA4C76 /* ContentView.swift in Sources */,
+				AC240AA725EE6BB0009875C8 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +379,7 @@
 		};
 		1980011C25EDE0C300BA4C76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D24B65C9DE0C8E90F61ACFC0 /* Pods-IOSPlayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -309,6 +387,7 @@
 				DEVELOPMENT_TEAM = 9FYGYU94H6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = IOSPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -322,6 +401,7 @@
 		};
 		1980011D25EDE0C300BA4C76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EBD665EC767F616C4F1BFFA /* Pods-IOSPlayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -329,6 +409,7 @@
 				DEVELOPMENT_TEAM = 9FYGYU94H6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = IOSPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

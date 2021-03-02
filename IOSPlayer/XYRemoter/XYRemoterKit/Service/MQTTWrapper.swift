@@ -6,7 +6,7 @@
 //  Copyright © 2020 XYZHENU. All rights reserved.
 //
 import CocoaMQTT
-class MQTTWrapper {
+public class MQTTWrapper {
     
     private enum Topic : String {
         case direction
@@ -18,7 +18,7 @@ class MQTTWrapper {
     }
     
     private let mqtt:CocoaMQTT
-    init(clientID: String = "test", username: String = "xykit", password: String = "xykit.", host: String = "localhost", port: UInt16 = 1883) {
+    public init(clientID: String = "test", username: String = "xykit", password: String = "xykit.", host: String = "localhost", port: UInt16 = 1883) {
         mqtt = CocoaMQTT(clientID: clientID, host: host, port: port)
         mqtt.username = username
         mqtt.password = password
@@ -49,31 +49,31 @@ class MQTTWrapper {
 }
 
 extension MQTTWrapper : CocoaMQTTDelegate {
-    func mqttDidPing(_ mqtt: CocoaMQTT) {
+    public func mqttDidPing(_ mqtt: CocoaMQTT) {
         print("mqttDidPing")
     }
     
-    func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
+    public func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
         print("mqttDidReceivePong")
     }
     
-    func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
+    public func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
         print("mqttDidDisconnect \(String(describing: err))")
     }
     
-    func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
+    public func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         print("didConnectAck \(ack.description)")
     }
     
-    func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
+    public func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
         print("didPublishMessage \(message.string ?? "") \(id)")
     }
     
-    func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
+    public func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
         print("didPublishAck \(id)")
     }
     
-    func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
+    public func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
         print("didReceiveMessage \(message.string ?? "") \(id)")
         guard let topic = Topic(rawValue: message.topic) else { return }
         let msg = message.string ?? ""
@@ -93,11 +93,11 @@ extension MQTTWrapper : CocoaMQTTDelegate {
         }
     }
     
-    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
+    public func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
         print("didSubscribeTopic \(topics)")
     }
     
-    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
+    public func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
         print("didSubscribeTopic \(topic)")
     }
 }

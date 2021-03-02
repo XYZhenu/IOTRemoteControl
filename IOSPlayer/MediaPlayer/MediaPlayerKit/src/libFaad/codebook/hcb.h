@@ -124,19 +124,18 @@ uint8_t unsigned_cb[];
 int hcb_2_quad_table_size[];
 int hcb_2_pair_table_size[];
 int hcb_bin_table_size[];
-
-#include "codebook/hcb_1.h"
-#include "codebook/hcb_2.h"
-#include "codebook/hcb_3.h"
-#include "codebook/hcb_4.h"
-#include "codebook/hcb_5.h"
-#include "codebook/hcb_6.h"
-#include "codebook/hcb_7.h"
-#include "codebook/hcb_8.h"
-#include "codebook/hcb_9.h"
-#include "codebook/hcb_10.h"
-#include "codebook/hcb_11.h"
-#include "codebook/hcb_sf.h"
+#include "hcb_1.h"
+#include "hcb_2.h"
+#include "hcb_3.h"
+#include "hcb_4.h"
+#include "hcb_5.h"
+#include "hcb_6.h"
+#include "hcb_7.h"
+#include "hcb_8.h"
+#include "hcb_9.h"
+#include "hcb_10.h"
+#include "hcb_11.h"
+#include "hcb_sf.h"
 
 
 #ifdef __cplusplus

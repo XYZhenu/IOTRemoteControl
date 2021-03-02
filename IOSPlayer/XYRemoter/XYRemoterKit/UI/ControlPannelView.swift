@@ -9,7 +9,7 @@
 import UIKit
 public class ControlPannelView: UIView, JoyStickReceiver {
     
-    private let mqtt = MQTTWrapper()
+    public var mqtt:MQTTWrapper?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,8 +23,9 @@ public class ControlPannelView: UIView, JoyStickReceiver {
     
     private func setupUI(){
         addSubview(directionStick)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[directionStick(100)]-15-|", options: NSLayoutConstraint.FormatOptions.alignAllBottom, metrics: nil, views: ["directionStick":directionStick]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[directionStick(100)]-15-|", options: NSLayoutConstraint.FormatOptions.directionLeftToRight, metrics: nil, views: ["directionStick":directionStick]))
+        directionStick.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[directionStick(150)]-15-|", options: NSLayoutConstraint.FormatOptions.alignAllBottom, metrics: nil, views: ["directionStick":directionStick]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[directionStick(150)]-15-|", options: NSLayoutConstraint.FormatOptions.alignAllRight, metrics: nil, views: ["directionStick":directionStick]))
         directionStick.receiver = self
         
         backgroundColor = UIColor.clear
@@ -34,14 +35,14 @@ public class ControlPannelView: UIView, JoyStickReceiver {
     
     private let directionStick: JoyStickView = JoyStickView()
     func stickMove(stick: JoyStickView, x: Float, y: Float) {
-        mqtt.publishDirection(x: x, y: y)
+        mqtt?.publishDirection(x: x, y: y)
     }
     func receiveModeClick(_ sender: UIButton) {
         if sender.isSelected {
-            mqtt.unsubscribeDirection()
+            mqtt?.unsubscribeDirection()
             sender.isSelected = false
         } else {
-            mqtt.subscribeDirection {[unowned self] (x, y) in
+            mqtt?.subscribeDirection {[unowned self] (x, y) in
                 self.directionStick.moveStick(x: x, y: y)
             }
             sender.isSelected = true
