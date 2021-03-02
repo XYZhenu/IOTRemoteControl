@@ -10,17 +10,17 @@ desLibPath=$derivedDataPath/ArchiveIntermediates/ALL_BUILD/IntermediateBuildFile
 productPath=$project_path/IOSPlayer/SDKs
 
 read number
-#git pull
-#git submodule update
+# git pull
+# git submodule update
 
 if [ $number == 1 ]; then
 cd $project_path/ZLMediaKit
-# rm -rf build
-# mkdir build
+rm -rf build
+mkdir build
 cd build
 cmake .. -G Xcode -DCMAKE_TOOLCHAIN_FILE=../cmake/ios.toolchain.cmake  -DPLATFORM=OS
 project_name=$(ls ./ | grep '.xcodeproj')
-xcodebuild archive -project ${project_name} -scheme ALL_BUILD -configuration Debug -destination 'platform=iOS,name=xo' -derivedDataPath $derivedDataPath
+xcodebuild archive -project ${project_name} -scheme ALL_BUILD -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 11' -derivedDataPath $derivedDataPath
 rm -rf $productPath/iphoneos
 cp -r $desLibPath/iphoneos $productPath
 
@@ -32,7 +32,7 @@ mkdir build
 cd build
 cmake .. -G Xcode -DCMAKE_TOOLCHAIN_FILE=../cmake/ios.toolchain.cmake  -DPLATFORM=SIMULATOR64
 project_name=$(ls ./ | grep '.xcodeproj')
-xcodebuild archive -project ${project_name} -scheme ALL_BUILD -configuration Debug -derivedDataPath $derivedDataPath
+xcodebuild archive -project ${project_name} -scheme ALL_BUILD -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 11' -derivedDataPath $derivedDataPath
 rm -rf $productPath/iphonesimulator
 cp -r $desLibPath/iphonesimulator $productPath
 
@@ -46,6 +46,7 @@ do
     filename=${file##*/}
     lipo -create $file $productPath/iphonesimulator/$filename -output $productPath/iphoneuniversal/$filename
 done
+rm -rf $productPath/iphone
 ln -s $productPath/iphoneuniversal $productPath/iphone
 else
 

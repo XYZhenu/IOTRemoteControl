@@ -6,19 +6,19 @@
 //  Copyright © 2020 XYZHENU. All rights reserved.
 //
 import CocoaMQTT
-public class MQTTWrapper {
+class MQTTWrapper {
     
-    enum Topic : String {
+    private enum Topic : String {
         case direction
         case reset
     }
     
-    enum Reset : String {
+    private enum Reset : String {
         case direction
     }
     
-    let mqtt:CocoaMQTT
-    public init(clientID: String = "test", username: String = "xykit", password: String = "xykit.", host: String = "localhost", port: UInt16 = 1883) {
+    private let mqtt:CocoaMQTT
+    init(clientID: String = "test", username: String = "xykit", password: String = "xykit.", host: String = "localhost", port: UInt16 = 1883) {
         mqtt = CocoaMQTT(clientID: clientID, host: host, port: port)
         mqtt.username = username
         mqtt.password = password
@@ -28,7 +28,7 @@ public class MQTTWrapper {
         mqtt.connect() ? print("connect success") : print("connect failed")
     }
     
-    public func publishDirection(x:Float, y:Float) {
+    func publishDirection(x:Float, y:Float) {
         if fabsf(x) < 0.01, fabsf(y) < 0.01 {
             mqtt.publish(Topic.reset.rawValue, withString: "direction", qos: CocoaMQTTQOS.qos1, retained: false, dup: true)
         } else {
@@ -36,44 +36,44 @@ public class MQTTWrapper {
         }
     }
     
-    var directionChange:((Float, Float)->Void)?
-    public func subscribeDirection(_ change:@escaping ((Float, Float)->Void)) {
+    private var directionChange:((Float, Float)->Void)?
+    func subscribeDirection(_ change:@escaping ((Float, Float)->Void)) {
         mqtt.subscribe([(Topic.direction.rawValue, .qos0), (Topic.reset.rawValue, .qos1)])
         directionChange = change
     }
     
-    public func unsubscribeDirection(){
+    func unsubscribeDirection(){
         mqtt.unsubscribe(Topic.direction.rawValue)
         directionChange = nil
     }
 }
 
 extension MQTTWrapper : CocoaMQTTDelegate {
-    public func mqttDidPing(_ mqtt: CocoaMQTT) {
+    func mqttDidPing(_ mqtt: CocoaMQTT) {
         print("mqttDidPing")
     }
     
-    public func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
+    func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
         print("mqttDidReceivePong")
     }
     
-    public func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
+    func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
         print("mqttDidDisconnect \(String(describing: err))")
     }
     
-    public func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
+    func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         print("didConnectAck \(ack.description)")
     }
     
-    public func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
+    func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
         print("didPublishMessage \(message.string ?? "") \(id)")
     }
     
-    public func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
+    func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
         print("didPublishAck \(id)")
     }
     
-    public func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
+    func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
         print("didReceiveMessage \(message.string ?? "") \(id)")
         guard let topic = Topic(rawValue: message.topic) else { return }
         let msg = message.string ?? ""
@@ -93,11 +93,11 @@ extension MQTTWrapper : CocoaMQTTDelegate {
         }
     }
     
-    public func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
+    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
         print("didSubscribeTopic \(topics)")
     }
     
-    public func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
+    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
         print("didSubscribeTopic \(topic)")
     }
 }

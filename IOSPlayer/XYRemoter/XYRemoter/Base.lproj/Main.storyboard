@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,13 +15,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-qd-YKV" customClass="JoyStick" customModule="XYRemoterKit">
-                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFo-qC-NWw" customClass="JoyStickView" customModule="XYRemoterKit">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="C6R-Ls-0JL"/>
-                                    <constraint firstAttribute="height" constant="300" id="R6T-uD-gLK"/>
-                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLE-6X-wtb">
                                 <rect key="frame" x="0.0" y="44" width="50" height="50"/>
@@ -38,15 +34,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="hLE-6X-wtb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2T3-mB-cjJ"/>
-                            <constraint firstItem="FUH-qd-YKV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TIU-4Y-V4F"/>
-                            <constraint firstItem="FUH-qd-YKV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YeG-K1-LZd"/>
+                            <constraint firstItem="UFo-qC-NWw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6mL-Vg-ymF"/>
+                            <constraint firstItem="UFo-qC-NWw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SPF-eO-amj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UFo-qC-NWw" secondAttribute="bottom" id="ioT-kx-0We"/>
                             <constraint firstItem="hLE-6X-wtb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kbI-Pc-fv4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UFo-qC-NWw" secondAttribute="trailing" id="zcA-Ci-phg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="stick" destination="FUH-qd-YKV" id="GF0-ra-uqA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,6 +9,7 @@
 #import "StreamPlayer.h"
 #import <mk_player.h>
 #import <mk_thread.h>
+#import "H264HwDecoder.h"
 @interface StreamPlayer ()
 {
     mk_player _player;
@@ -17,6 +18,7 @@
     uint32_t _pts;
     uint32_t _dts;
 }
+@property (nonatomic,strong) H264HwDecoder* decoder;
 @end
 
 @implementation StreamPlayer

@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1980012625EE38F600BA4C76 /* ControlPannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1980012525EE38F600BA4C76 /* ControlPannelView.swift */; };
 		ACC9CD3C250DCA7500381015 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9CD3B250DCA7500381015 /* AppDelegate.swift */; };
 		ACC9CD3E250DCA7500381015 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9CD3D250DCA7500381015 /* SceneDelegate.swift */; };
 		ACC9CD40250DCA7500381015 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9CD3F250DCA7500381015 /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		03850C7DD1F73BAB37D8C154 /* Pods_XYRemoterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XYRemoterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1980012525EE38F600BA4C76 /* ControlPannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPannelView.swift; sourceTree = "<group>"; };
 		5E4719EA0D2A3E951D377E81 /* Pods-XYRemoter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYRemoter.debug.xcconfig"; path = "Target Support Files/Pods-XYRemoter/Pods-XYRemoter.debug.xcconfig"; sourceTree = "<group>"; };
 		707CED79A985932AB462C196 /* Pods-XYRemoter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYRemoter.release.xcconfig"; path = "Target Support Files/Pods-XYRemoter/Pods-XYRemoter.release.xcconfig"; sourceTree = "<group>"; };
 		96991397E0BE2E508663ED9D /* Pods-XYRemoterKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYRemoterKit.debug.xcconfig"; path = "Target Support Files/Pods-XYRemoterKit/Pods-XYRemoterKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				ACC9CD64250DCBA400381015 /* JoyStick.swift */,
+				1980012525EE38F600BA4C76 /* ControlPannelView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1980012625EE38F600BA4C76 /* ControlPannelView.swift in Sources */,
 				ACC9CD65250DCBA400381015 /* JoyStick.swift in Sources */,
 				ACC9CD6A250FB37C00381015 /* MQTTWrapper.swift in Sources */,
 			);

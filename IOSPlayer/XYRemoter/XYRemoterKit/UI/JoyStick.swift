@@ -8,11 +8,11 @@
 
 import UIKit
 
-@objc public protocol JoyStickReceiver {
-    func stickMove(stick:JoyStick, x:Float, y:Float)
+@objc protocol JoyStickReceiver {
+    func stickMove(stick:JoyStickView, x:Float, y:Float)
 }
 
-public class JoyStick: UIView {
+class JoyStickView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -20,13 +20,14 @@ public class JoyStick: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        setupUI()
     }
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
     }
-    public var strokeColor = UIColor.white
+    var strokeColor = UIColor.white
     
     private let stickPoint = UIImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
     private func setupUI() {
@@ -39,12 +40,12 @@ public class JoyStick: UIView {
         addSubview(stickPoint)
     }
     
-    public override func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         updateStickPosition()
     }
     
-    public override func draw(_ rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         super.draw(rect)
 
         let context = UIGraphicsGetCurrentContext()
@@ -60,23 +61,23 @@ public class JoyStick: UIView {
         context?.restoreGState()
     }
     
-    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         updateStick(location: positionCaculate(point: touch.location(in: self)))
     }
     
-    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         updateStick(location: positionCaculate(point: touch.location(in: self)))
     }
     
-    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         updateStick(location: positionCaculate(point: touch.location(in: self)))
         resetStick()
     }
     
-    public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         resetStick()
     }
     
@@ -106,7 +107,7 @@ public class JoyStick: UIView {
         }
     }
     
-    public weak var receiver: JoyStickReceiver?
+    weak var receiver: JoyStickReceiver?
     private func updateStick(location: (position:CGPoint, rate:CGPoint)) {
         stickPoint.center = location.position
         receiver?.stickMove(stick: self, x: Float(location.rate.x), y: Float(location.rate.y))
@@ -123,7 +124,7 @@ public class JoyStick: UIView {
         self.stickPoint.center = CGPoint(x: centrex, y: centrey)
     }
     
-    public func moveStick(x:Float, y:Float) {
+    func moveStick(x:Float, y:Float) {
         if fabsf(x) < 0.01, fabsf(y) < 0.01 {
             UIView.animate(withDuration: 0.3) {
                 self.updateStickPosition()
