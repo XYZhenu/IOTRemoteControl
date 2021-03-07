@@ -14,7 +14,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var controlPannel: ControlPannelView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        controlPannel.mqtt = MQTTWrapper()
-             
+//        controlPannel.mqtt = MQTTWrapper()
+        player.play("rtsp://192.168.1.13/test/test")
     }
 }

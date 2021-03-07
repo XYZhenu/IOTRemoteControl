@@ -26,17 +26,30 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.decoder = [[H264HwDecoder alloc] init];
-        self.decoder.showType = H264HWDataType_Layer;
-        self.decoder.displayLayer = [[AVSampleBufferDisplayLayer alloc] init];
-        self.decoder.displayLayer.frame = self.bounds;
-        self.decoder.displayLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-        self.decoder.displayLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-        self.decoder.displayLayer.opaque = YES;
-        [self.layer addSublayer:self.decoder.displayLayer];
-        [self initPlayer];
+        [self setup];
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+-(void)setup {
+    self.decoder = [[H264HwDecoder alloc] init];
+    self.decoder.showType = H264HWDataType_Layer;
+    self.decoder.displayLayer = [[AVSampleBufferDisplayLayer alloc] init];
+    self.decoder.displayLayer.frame = self.bounds;
+    self.decoder.displayLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    self.decoder.displayLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+    self.decoder.displayLayer.opaque = YES;
+    [self.layer addSublayer:self.decoder.displayLayer];
+    [self initPlayer];
 }
 
 - (void)layoutSubviews {

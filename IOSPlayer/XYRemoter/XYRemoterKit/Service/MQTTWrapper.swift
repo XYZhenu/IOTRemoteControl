@@ -18,7 +18,7 @@ public class MQTTWrapper {
     }
     
     private let mqtt:CocoaMQTT
-    public init(clientID: String = "test", username: String = "xykit", password: String = "xykit.", host: String = "localhost", port: UInt16 = 1883) {
+    public init(clientID: String = "test", username: String = "xykit", password: String = "xykit.", host: String = "192.168.1.13", port: UInt16 = 1883) {
         mqtt = CocoaMQTT(clientID: clientID, host: host, port: port)
         mqtt.username = username
         mqtt.password = password
