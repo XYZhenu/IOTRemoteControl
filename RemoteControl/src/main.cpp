@@ -2,13 +2,11 @@
 #include <WiFi.h>
 #include <MQTT.h>
 
-const char ssid[] = "ssid";
-const char pass[] = "pass";
-
+char ssid[] = "CMCC-kP6g";
+char pass[] = "p7bbkh3c";
+char ipadd[] = "192.168.1.13";
 WiFiClient net;
 MQTTClient client;
-
-unsigned long lastMillis = 0;
 
 void connect() {
   Serial.print("checking wifi...");
@@ -18,28 +16,46 @@ void connect() {
   }
 
   Serial.print("\nconnecting...");
-  while (!client.connect("arduino", "try", "try")) {
+  while (!client.connect("arduino", "xykit", "xykit.")) {
     Serial.print(".");
     delay(1000);
   }
 
   Serial.println("\nconnected!");
 
-  client.subscribe("/hello");
-  // client.unsubscribe("/hello");
+  client.subscribe("reset");
+  client.subscribe("direction");
 }
 
 void messageReceived(String &topic, String &payload) {
   Serial.println("incoming: " + topic + " - " + payload);
 }
 
+
+void mcuSetup()
+{
+  //初始化电机驱动IO为输出方式
+  pinMode(Left_motor_front, OUTPUT);
+  pinMode(Left_motor_back, OUTPUT);
+  digitalWrite(Right_motor_en, LOW);
+  digitalWrite(Left_motor_en, LOW);
+  
+  Serial.begin(9600);	//波特率9600 （蓝牙通讯设定波特率）
+}
+
+
+
+
+
 void setup() {
+
   Serial.begin(115200);
+
   WiFi.begin(ssid, pass);
 
   // Note: Local domain names (e.g. "Computer.local" on OSX) are not supported by Arduino.
   // You need to set the IP address directly.
-  client.begin("broker.shiftr.io", net);
+  client.begin(ipadd, net);
   client.onMessage(messageReceived);
 
   connect();
@@ -50,11 +66,5 @@ void loop() {
 
   if (!client.connected()) {
     connect();
-  }
-
-  // publish a message roughly every second.
-  if (millis() - lastMillis > 1000) {
-    lastMillis = millis();
-    client.publish("/hello", "world");
   }
 }
