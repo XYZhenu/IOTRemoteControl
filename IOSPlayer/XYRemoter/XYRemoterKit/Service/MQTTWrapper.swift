@@ -30,7 +30,7 @@ public class MQTTWrapper {
     
     func publishDirection(x:Float, y:Float) {
         if fabsf(x) < 0.01, fabsf(y) < 0.01 {
-            mqtt.publish(Topic.reset.rawValue, withString: "direction", qos: CocoaMQTTQOS.qos1, retained: false, dup: true)
+            mqtt.publish(Topic.reset.rawValue, withString: Reset.direction.rawValue, qos: CocoaMQTTQOS.qos1, retained: false, dup: true)
         } else {
             mqtt.publish(Topic.direction.rawValue, withString: "\(Int(x*100)),\(Int(y*100))", qos: CocoaMQTTQOS.qos0, retained: false, dup: true)
         }

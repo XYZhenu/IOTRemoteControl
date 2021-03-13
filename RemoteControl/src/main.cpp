@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <MQTT.h>
-
+#include <WString.h>
 char ssid[] = "CMCC-kP6g";
 char pass[] = "p7bbkh3c";
 char ipadd[] = "192.168.1.13";
@@ -29,18 +29,29 @@ void connect() {
 
 void messageReceived(String &topic, String &payload) {
   Serial.println("incoming: " + topic + " - " + payload);
+  if (topic == "reset" && payload == "direction")
+  {
+    
+  } else if (topic == "direction")
+  {
+    int index = payload.indexOf(",");
+    String xstring = payload.substring(0,index);
+    String ystring = payload.substring(index+1,(int)payload.length());
+    int x = xstring.toInt();
+    int y = ystring.toInt();
+
+  }
 }
 
 
 void mcuSetup()
 {
   //初始化电机驱动IO为输出方式
-  pinMode(Left_motor_front, OUTPUT);
-  pinMode(Left_motor_back, OUTPUT);
-  digitalWrite(Right_motor_en, LOW);
-  digitalWrite(Left_motor_en, LOW);
-  
-  Serial.begin(9600);	//波特率9600 （蓝牙通讯设定波特率）
+  // pinMode(Left_motor_front, OUTPUT);
+  // pinMode(Left_motor_back, OUTPUT);
+  // digitalWrite(Right_motor_en, LOW);
+  // digitalWrite(Left_motor_en, LOW);
+
 }
 
 
@@ -50,7 +61,7 @@ void mcuSetup()
 void setup() {
 
   Serial.begin(115200);
-
+  mcuSetup();
   WiFi.begin(ssid, pass);
 
   // Note: Local domain names (e.g. "Computer.local" on OSX) are not supported by Arduino.
@@ -59,6 +70,7 @@ void setup() {
   client.onMessage(messageReceived);
 
   connect();
+
 }
 
 void loop() {
