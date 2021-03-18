@@ -1,133 +1,60 @@
-#include <Arduino.h>
-#include <WiFi.h>
-#include <MQTT.h>
-#include <WString.h>
-char ssid[] = "CMCC-kP6g";
-char pass[] = "p7bbkh3c";
-char ipadd[] = "192.168.1.13";
-char NODEMCU[] = "NODEMCU";
-WiFiClient net;
-MQTTClient client;
+#include <ESP8266WiFi.h>          //https://github.com/esp8266/Arduino
 
-void connect() {
-  Serial.print("checking wifi...");
-  while (WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
-    delay(1000);
-  }
+//needed for library
+#include <ESP8266WebServer.h>
+#include <DNSServer.h>
+#include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
 
-  Serial.print("\nconnecting...");
-  while (!client.connect("arduino", "xykit", "xykit.")) {
-    Serial.print(".");
-    delay(1000);
-  }
-
-  Serial.println("\nconnected!");
-
-  client.subscribe("reset");
-  client.subscribe("direction");
-}
-
-int nodemcuA1 = 5;
-int nodemcuA2 = 0;
-int nodemcuB1 = 4;
-int nodemcuB2 = 2;
-
-void mcuSetup()
-{
-
-
-  if (BOARD == NODEMCU)
-  {
-    pinMode(nodemcuA1, OUTPUT);
-    pinMode(nodemcuA2, OUTPUT);
-    pinMode(nodemcuB1, OUTPUT);
-    pinMode(nodemcuB2, OUTPUT);
-  }
-}
-
-void processYpwm(int pwm) {
-  if (BOARD == NODEMCU)
-  {
-    if (pwm > 0)
-    {
-      digitalWrite(nodemcuA1, LOW);
-      digitalWrite(nodemcuA2, HIGH);
-    } else {
-      digitalWrite(nodemcuA1, HIGH);
-      digitalWrite(nodemcuA2, LOW);
-    }
-  }
-  
-}
-
-void processXpwm(int pwm) {
-  if (BOARD == NODEMCU)
-  {
-    if (pwm > 0)
-    {
-      digitalWrite(nodemcuB1, LOW);
-      digitalWrite(nodemcuB2, HIGH);
-    } else {
-      digitalWrite(nodemcuB1, HIGH);
-      digitalWrite(nodemcuB2, LOW);
-    }
-  }
-  
-}
-
-void reset() {
-  if (BOARD == NODEMCU)
-  {
-    digitalWrite(nodemcuA1, LOW);
-    digitalWrite(nodemcuA2, LOW);
-    digitalWrite(nodemcuB1, LOW);
-    digitalWrite(nodemcuB2, LOW);
-  }
-}
-
-void messageReceived(String &topic, String &payload) {
-  Serial.println("incoming: " + topic + " - " + payload);
-  if (topic == "reset" && payload == "direction")
-  {
-    reset();
-  } else if (topic == "direction") {
-    int index = payload.indexOf(",");
-    String xstring = payload.substring(0,index);
-    String ystring = payload.substring(index+1,(int)payload.length());
-    int x = xstring.toInt();
-    int y = ystring.toInt();
-    processXpwm(x);
-    processYpwm(y);
-  }
-}
-
-
-
-
-
-
+// select which pin will trigger the configuration portal when set to LOW
+// ESP-01 users please note: the only pins available (0 and 2), are shared 
+// with the bootloader, so always set them HIGH at power-up
+#define TRIGGER_PIN 16
 
 
 void setup() {
-
+  // put your setup code here, to run once:
   Serial.begin(115200);
-  mcuSetup();
-  WiFi.begin(ssid, pass);
+  Serial.println("\n Starting");
 
-  // Note: Local domain names (e.g. "Computer.local" on OSX) are not supported by Arduino.
-  // You need to set the IP address directly.
-  client.begin(ipadd, net);
-  client.onMessage(messageReceived);
-
-  connect();
-
+  pinMode(TRIGGER_PIN, INPUT);
 }
 
-void loop() {
-  client.loop();
 
-  if (!client.connected()) {
-    connect();
+void loop() {
+  // is configuration portal requested?
+  if ( digitalRead(TRIGGER_PIN) == LOW ) {
+    //WiFiManager
+    //Local intialization. Once its business is done, there is no need to keep it around
+    WiFiManager wifiManager;
+
+    //reset settings - for testing
+    //wifiManager.resetSettings();
+
+    //sets timeout until configuration portal gets turned off
+    //useful to make it all retry or go to sleep
+    //in seconds
+    //wifiManager.setTimeout(120);
+
+    //it starts an access point with the specified name
+    //here  "AutoConnectAP"
+    //and goes into a blocking loop awaiting configuration
+
+    //WITHOUT THIS THE AP DOES NOT SEEM TO WORK PROPERLY WITH SDK 1.5 , update to at least 1.5.1
+    //WiFi.mode(WIFI_STA);
+    
+    if (!wifiManager.startConfigPortal("OnDemandAP")) {
+      Serial.println("failed to connect and hit timeout");
+      delay(3000);
+      //reset and try again, or maybe put it to deep sleep
+      ESP.reset();
+      delay(5000);
+    }
+
+    //if you get here you have connected to the WiFi
+    Serial.println("connected...yeey :)");
   }
+
+
+  // put your main code here, to run repeatedly:
+
 }
