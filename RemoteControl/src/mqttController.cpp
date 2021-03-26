@@ -1,25 +1,30 @@
 #include "mqttController.h"
 #include "mcuController.h"
+#include <ArduinoJson.h>
+#include <FS.h>
+
 MQTTController::MQTTController(/* args */)
 {
-    client = new MQTTClient();
+  client = new MQTTClient();
 }
 
 MQTTController::~MQTTController()
 {
-    delete client;
+  delete client;
 }
 
-void messageReceived(String &topic, String &payload) 
+void messageReceived(String &topic, String &payload)
 {
   Serial.println("incoming: " + topic + " - " + payload);
   if (topic == "reset" && payload == "direction")
   {
     reset();
-  } else if (topic == "direction") {
+  }
+  else if (topic == "direction")
+  {
     int index = payload.indexOf(",");
-    String xstring = payload.substring(0,index);
-    String ystring = payload.substring(index+1,(int)payload.length());
+    String xstring = payload.substring(0, index);
+    String ystring = payload.substring(index + 1, (int)payload.length());
     int x = xstring.toInt();
     int y = ystring.toInt();
     processXpwm(x);
@@ -27,10 +32,11 @@ void messageReceived(String &topic, String &payload)
   }
 }
 
-void MQTTController::connect() 
+void MQTTController::connect()
 {
   Serial.print("\nmqtt connecting...");
-  while (!client->connect("arduino", "xykit", "xykit.")) {
+  while (!client->connect("arduino", "xykit", "xykit."))
+  {
     Serial.print(".");
     delay(1000);
   }
@@ -38,7 +44,7 @@ void MQTTController::connect()
   Serial.println("\nmqtt connected!");
 }
 
-void MQTTController::setup() 
+void MQTTController::setup()
 {
   mcuSetup();
   this->connect();
@@ -48,9 +54,11 @@ void MQTTController::setup()
   client->onMessage(messageReceived);
 }
 
-void MQTTController::loop(){
-    client->loop();
-    if (!client->connected()) {
-        this->connect();
-    }
+void MQTTController::loop()
+{
+  client->loop();
+  if (!client->connected())
+  {
+    this->connect();
+  }
 }

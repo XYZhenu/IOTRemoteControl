@@ -1,0 +1,1 @@
+void wifiSetup(bool reset);
