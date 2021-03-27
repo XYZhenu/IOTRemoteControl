@@ -1,2 +1,2 @@
-const char * configJson(int count, ...);
+void configJson(const char **,int count, ...);
 void saveConfig(int count, ...);

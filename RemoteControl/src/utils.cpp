@@ -2,9 +2,8 @@
 #include <FS.h> //this needs to be first, or it all crashes and burns...
 #include <ArduinoJson.h>
 using namespace std;
-const char *configJson(int count, ...)
+void configJson(const char **values,int count, ...)
 {
-    const char *values[count];
     // put your setup code here, to run once:
     //clean FS, for testing
     //SPIFFS.format();
@@ -47,7 +46,6 @@ const char *configJson(int count, ...)
                     //   strcpy(mqtt_port, json["mqtt_port"]);
                     //   strcpy(blynk_token, json["blynk_token"]);
                     va_list args;
-                    const char *args1;
                     va_start(args, count);
                     for (int i = 0; i < count; i++)
                     {
@@ -68,8 +66,6 @@ const char *configJson(int count, ...)
     {
         Serial.println("failed to mount FS");
     }
-
-    return *values;
 }
 
 void saveConfig(int count, ...)
@@ -87,7 +83,6 @@ void saveConfig(int count, ...)
 #endif
 
     va_list args;
-    const char *args1;
     va_start(args, count);
     for (int i = 0; i < count; i++)
     {

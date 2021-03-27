@@ -24,10 +24,11 @@ void saveConfigCallback()
 
 void wifiSetup(bool reset)
 {
-    const char * config = configJson(3,"mqtt_server","mqtt_port","blynk_token");
-    strcpy(mqtt_server, config);
-    strcpy(mqtt_port, config+1);
-    strcpy(blynk_token, config+2);
+    const char * config[3];
+    configJson(config,3,"mqtt_server","mqtt_port","blynk_token");
+    strcpy(mqtt_server, *config);
+    strcpy(mqtt_port, *(config+1));
+    strcpy(blynk_token, *(config+2));
     // The extra parameters to be configured (can be either global or just in the setup)
     // After connecting, parameter.getValue() will get you the configured value
     // id/name placeholder/prompt default length
@@ -54,6 +55,7 @@ void wifiSetup(bool reset)
     if (reset)
     {
         wifiManager.resetSettings();
+        Serial.println("wifiManager.resetSettings();\t");
     }
 
     //set minimu quality of signal so it ignores AP's under that quality
@@ -85,7 +87,7 @@ void wifiSetup(bool reset)
     strcpy(mqtt_server, custom_mqtt_server.getValue());
     strcpy(mqtt_port, custom_mqtt_port.getValue());
     strcpy(blynk_token, custom_blynk_token.getValue());
-    Serial.println("The values in the file are: ");
+    Serial.println("\tThe values in the file are: ");
     Serial.println("\tmqtt_server : " + String(mqtt_server));
     Serial.println("\tmqtt_port : " + String(mqtt_port));
     Serial.println("\tblynk_token : " + String(blynk_token));

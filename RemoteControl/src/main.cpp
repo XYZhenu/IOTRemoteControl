@@ -10,7 +10,7 @@ void tick()
   digitalWrite(LED_BUILTIN, !state);     // set pin to the opposite state
 }
 
-#define TRIGGER_PIN 16
+#define TRIGGER_PIN 0
 void setup() {
   // put your setup code here, to run once:
   pinMode(LED_BUILTIN, OUTPUT);
@@ -21,15 +21,18 @@ void setup() {
   wifiSetup(false);
   ticker.detach();
   digitalWrite(LED_BUILTIN, LOW);
-  pinMode(TRIGGER_PIN, INPUT);
+  pinMode(TRIGGER_PIN, INPUT_PULLUP);
 }
 
 
 void loop() {
+  
   if ( digitalRead(TRIGGER_PIN) == LOW ) {
-    ticker.attach(0.2, tick);
+    ticker.attach(0.5, tick);
     wifiSetup(true);
     ticker.detach();
     digitalWrite(LED_BUILTIN, LOW);
+  } else {
+    delay(1000);
   }
 }
