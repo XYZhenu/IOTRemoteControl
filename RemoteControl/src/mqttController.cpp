@@ -1,7 +1,6 @@
 #include "mqttController.h"
 #include "mcuController.h"
-#include <ArduinoJson.h>
-#include <FS.h>
+#include "utils.h"
 
 MQTTController::MQTTController(/* args */)
 {
@@ -35,7 +34,13 @@ void messageReceived(String &topic, String &payload)
 void MQTTController::connect()
 {
   Serial.print("\nmqtt connecting...");
-  while (!client->connect("arduino", "xykit", "xykit."))
+  const char *config[4];
+  const char *keys[4] = {"mqtt_server", "mqtt_clientid", "mqtt_username", "mqtt_password"};
+  configJson(keys, 4, config);
+  IPAddress add = IPAddress();
+  add.fromString(config[0]);
+  client->setHost(add);
+  while (!client->connect(config[1], config[2], config[3]))
   {
     Serial.print(".");
     delay(1000);
@@ -47,11 +52,10 @@ void MQTTController::connect()
 void MQTTController::setup()
 {
   mcuSetup();
-  this->connect();
-
   client->subscribe("reset");
   client->subscribe("direction");
   client->onMessage(messageReceived);
+  this->connect();
 }
 
 void MQTTController::loop()

@@ -6,6 +6,7 @@ class MQTTController
 private:
     MQTTClient *client = nullptr;
     void connect(void);
+
 public:
     MQTTController(/* args */);
     ~MQTTController();

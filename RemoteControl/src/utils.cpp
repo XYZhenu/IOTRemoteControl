@@ -2,7 +2,7 @@
 #include <FS.h> //this needs to be first, or it all crashes and burns...
 #include <ArduinoJson.h>
 using namespace std;
-void configJson(const char **values,int count, ...)
+void configJson(const char **keys, int count, const char **outvalues)
 {
     // put your setup code here, to run once:
     //clean FS, for testing
@@ -42,17 +42,12 @@ void configJson(const char **values,int count, ...)
                 {
 #endif
                     Serial.println("\nparsed json");
-                    //
-                    //   strcpy(mqtt_port, json["mqtt_port"]);
-                    //   strcpy(blynk_token, json["blynk_token"]);
-                    va_list args;
-                    va_start(args, count);
+
                     for (int i = 0; i < count; i++)
                     {
-                        auto key = va_arg(args, const char *);
-                        values[i] = json[key];
+                        const char *value = json[*keys[i]];
+                        outvalues[i] = value;
                     }
-                    va_end(args);
                 }
                 else
                 {
@@ -68,7 +63,7 @@ void configJson(const char **values,int count, ...)
     }
 }
 
-void saveConfig(int count, ...)
+void saveConfig(int count, const char **keys, const char **values)
 {
     File configFile = SPIFFS.open("/config.json", "w");
     if (!configFile)
@@ -82,16 +77,12 @@ void saveConfig(int count, ...)
     JsonObject &json = jsonBuffer.createObject();
 #endif
 
-    va_list args;
-    va_start(args, count);
     for (int i = 0; i < count; i++)
     {
-        auto key = va_arg(args, const char *);
-        auto value = va_arg(args, const char *);
+        const char *key = keys[i];
+        const char *value = values[i];
         json[key] = value;
     }
-
-    va_end(args);
 
 #ifdef ARDUINOJSON_VERSION_MAJOR >= 6
     serializeJson(json, Serial);

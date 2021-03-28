@@ -8,11 +8,9 @@
 #include <ArduinoJson.h> //https://github.com/bblanchon/ArduinoJson
 
 //define your default values here, if there are different values in config.json, they are overwritten.
-char mqtt_server[40];
-char mqtt_port[6] = "8080";
-char blynk_token[34] = "YOUR_BLYNK_TOKEN";
+int paramCount = 4;
+const char *params[4] = {"mqtt_server", "mqtt_clientid", "mqtt_username", "mqtt_password"};
 
-//flag for saving data
 bool shouldSaveConfig = false;
 
 //callback notifying us of the need to save config
@@ -24,34 +22,23 @@ void saveConfigCallback()
 
 void wifiSetup(bool reset)
 {
-    const char * config[3];
-    configJson(config,3,"mqtt_server","mqtt_port","blynk_token");
-    strcpy(mqtt_server, *config);
-    strcpy(mqtt_port, *(config+1));
-    strcpy(blynk_token, *(config+2));
-    // The extra parameters to be configured (can be either global or just in the setup)
-    // After connecting, parameter.getValue() will get you the configured value
-    // id/name placeholder/prompt default length
-    WiFiManagerParameter custom_mqtt_server("server", "mqtt server", mqtt_server, 40);
-    WiFiManagerParameter custom_mqtt_port("port", "mqtt port", mqtt_port, 6);
-    WiFiManagerParameter custom_blynk_token("blynk", "blynk token", blynk_token, 32);
-
-    //WiFiManager
-    //Local intialization. Once its business is done, there is no need to keep it around
     WiFiManager wifiManager;
-
-    //set config save notify callback
     wifiManager.setSaveConfigCallback(saveConfigCallback);
 
-    //set static ip
-    // wifiManager.setSTAStaticIPConfig(IPAddress(10, 0, 1, 99), IPAddress(10, 0, 1, 1), IPAddress(255, 255, 255, 0));
+    char const *config[paramCount];
+    WiFiManagerParameter *mamagerParam[paramCount];
 
-    //add all your parameters here
-    wifiManager.addParameter(&custom_mqtt_server);
-    wifiManager.addParameter(&custom_mqtt_port);
-    wifiManager.addParameter(&custom_blynk_token);
+    if (paramCount > 0)
+    {
+        configJson(params, paramCount, config);
+        for (int i = 0; i < paramCount; i++)
+        {
+            WiFiManagerParameter* custom_param = new WiFiManagerParameter(*(params + i), *(params + i), *(config + i), 40);
+            mamagerParam[i] = custom_param;
+            wifiManager.addParameter(custom_param);
+        }
+    }
 
-    //reset settings - for testing
     if (reset)
     {
         wifiManager.resetSettings();
@@ -82,22 +69,23 @@ void wifiSetup(bool reset)
 
     //if you get here you have connected to the WiFi
     Serial.println("connected...yeey :)");
-
-    //read updated parameters
-    strcpy(mqtt_server, custom_mqtt_server.getValue());
-    strcpy(mqtt_port, custom_mqtt_port.getValue());
-    strcpy(blynk_token, custom_blynk_token.getValue());
-    Serial.println("\tThe values in the file are: ");
-    Serial.println("\tmqtt_server : " + String(mqtt_server));
-    Serial.println("\tmqtt_port : " + String(mqtt_port));
-    Serial.println("\tblynk_token : " + String(blynk_token));
-
-    //save the custom parameters to FS
-    if (shouldSaveConfig)
-    {
-        saveConfig(3,"mqtt_server",&mqtt_server,"mqtt_port",&mqtt_port,"blynk_token",&blynk_token);
-    }
-
     Serial.println("local ip");
     Serial.println(WiFi.localIP());
+    if (!shouldSaveConfig)
+    {
+        return;
+    }
+    if (paramCount > 0)
+    {
+        for (int i = 0; i < paramCount; i++)
+        {
+            config[i] = mamagerParam[i]->getValue();
+            Serial.println(String(params[i]) + " : " + String(config[i]));
+        }
+        saveConfig(paramCount, params, config);
+        for (int i = 0; i < paramCount; i++)
+        {
+            delete mamagerParam[i];
+        }
+    }
 }

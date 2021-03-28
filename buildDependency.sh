@@ -56,7 +56,7 @@ cd $project_path/ZLMediaKit
 rm -rf build
 mkdir build
 cd build
-cmake .. -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2s/
+cmake .. -DOPENSSL_ROOT_DIR=/usr/bin/
 make -j4
 
 else
