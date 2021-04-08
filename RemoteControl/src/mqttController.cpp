@@ -1,16 +1,12 @@
 #include "mqttController.h"
 #include "mcuController.h"
 #include "utils.h"
+#include <Arduino.h>
+#include <MQTT.h>
+#include <ESP8266WiFi.h>
 
-MQTTController::MQTTController(/* args */)
-{
-  client = new MQTTClient();
-}
-
-MQTTController::~MQTTController()
-{
-  delete client;
-}
+MQTTClient *client = new MQTTClient();
+WiFiClient net;
 
 void messageReceived(String &topic, String &payload)
 {
@@ -31,38 +27,48 @@ void messageReceived(String &topic, String &payload)
   }
 }
 
-void MQTTController::connect()
+bool connect()
 {
-  Serial.print("\nmqtt connecting...");
-  const char *config[4];
+  Serial.println("mqtt connecting...");
+  String const *config[4];
   const char *keys[4] = {"mqtt_server", "mqtt_clientid", "mqtt_username", "mqtt_password"};
   configJson(keys, 4, config);
-  IPAddress add = IPAddress();
-  add.fromString(config[0]);
-  client->setHost(add);
-  while (!client->connect(config[1], config[2], config[3]))
+  client->begin(config[0]->c_str(), net);
+
+  int retry = 3;
+  while (!client->connect(config[1]->c_str(), config[2]->c_str(), config[3]->c_str()) && retry > 0)
   {
+    retry--;
     Serial.print(".");
     delay(1000);
   }
-
-  Serial.println("\nmqtt connected!");
+  for (int i = 0; i < 4; i++)
+  {
+    delete config[i];
+  }
+  if (client->connected())
+  {
+    client->subscribe("reset", 1);
+    client->subscribe("direction", 0);
+    Serial.println("mqtt connected!");
+    return true;
+  }
+  Serial.println("mqtt connected failed!");
+  return false;
 }
 
-void MQTTController::setup()
+bool mqttSetup()
 {
   mcuSetup();
-  client->subscribe("reset");
-  client->subscribe("direction");
   client->onMessage(messageReceived);
-  this->connect();
+  return connect();
 }
 
-void MQTTController::loop()
+void mqttLoop()
 {
   client->loop();
   if (!client->connected())
   {
-    this->connect();
+    connect();
   }
 }

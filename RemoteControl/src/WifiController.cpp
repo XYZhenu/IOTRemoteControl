@@ -6,7 +6,7 @@
 #include <WiFiManager.h> //https://github.com/tzapu/WiFiManager
 
 #include <ArduinoJson.h> //https://github.com/bblanchon/ArduinoJson
-
+#include <Arduino.h>
 //define your default values here, if there are different values in config.json, they are overwritten.
 int paramCount = 4;
 const char *params[4] = {"mqtt_server", "mqtt_clientid", "mqtt_username", "mqtt_password"};
@@ -24,8 +24,9 @@ void wifiSetup(bool reset)
 {
     WiFiManager wifiManager;
     wifiManager.setSaveConfigCallback(saveConfigCallback);
+    wifiManager.setBreakAfterConfig(true);
 
-    char const *config[paramCount];
+    const String *config[paramCount];
     WiFiManagerParameter *mamagerParam[paramCount];
 
     if (paramCount > 0)
@@ -33,7 +34,7 @@ void wifiSetup(bool reset)
         configJson(params, paramCount, config);
         for (int i = 0; i < paramCount; i++)
         {
-            WiFiManagerParameter* custom_param = new WiFiManagerParameter(*(params + i), *(params + i), *(config + i), 40);
+            WiFiManagerParameter *custom_param = new WiFiManagerParameter(*(params + i), *(params + i), config[i]->c_str(), 40);
             mamagerParam[i] = custom_param;
             wifiManager.addParameter(custom_param);
         }
@@ -41,30 +42,25 @@ void wifiSetup(bool reset)
 
     if (reset)
     {
-        wifiManager.resetSettings();
-        Serial.println("wifiManager.resetSettings();\t");
+        if (!wifiManager.startConfigPortal("AutoConnectAP"))
+        {
+            Serial.println("failed to connect and hit timeout");
+            delay(3000);
+            //reset and try again, or maybe put it to deep sleep
+            ESP.reset();
+            delay(5000);
+        }
     }
-
-    //set minimu quality of signal so it ignores AP's under that quality
-    //defaults to 8%
-    //wifiManager.setMinimumSignalQuality();
-
-    //sets timeout until configuration portal gets turned off
-    //useful to make it all retry or go to sleep
-    //in seconds
-    //wifiManager.setTimeout(120);
-
-    //fetches ssid and pass and tries to connect
-    //if it does not connect it starts an access point with the specified name
-    //here  "AutoConnectAP"
-    //and goes into a blocking loop awaiting configuration
-    if (!wifiManager.autoConnect("AutoConnectAP"))
+    else
     {
-        Serial.println("failed to connect and hit timeout");
-        delay(3000);
-        //reset and try again, or maybe put it to deep sleep
-        ESP.reset();
-        delay(5000);
+        if (!wifiManager.autoConnect("AutoConnectAP"))
+        {
+            Serial.println("failed to connect and hit timeout");
+            delay(3000);
+            //reset and try again, or maybe put it to deep sleep
+            ESP.reset();
+            delay(5000);
+        }
     }
 
     //if you get here you have connected to the WiFi
@@ -77,15 +73,17 @@ void wifiSetup(bool reset)
     }
     if (paramCount > 0)
     {
+        const char *tempConfig[paramCount];
         for (int i = 0; i < paramCount; i++)
         {
-            config[i] = mamagerParam[i]->getValue();
-            Serial.println(String(params[i]) + " : " + String(config[i]));
+            tempConfig[i] = mamagerParam[i]->getValue();
+            Serial.println(String(params[i]) + " : " + *config[i]);
         }
-        saveConfig(paramCount, params, config);
+        saveConfig(paramCount, params, tempConfig);
         for (int i = 0; i < paramCount; i++)
         {
             delete mamagerParam[i];
+            delete config[i];
         }
     }
 }

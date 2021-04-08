@@ -2,7 +2,7 @@
 #include <FS.h> //this needs to be first, or it all crashes and burns...
 #include <ArduinoJson.h>
 using namespace std;
-void configJson(const char **keys, int count, const char **outvalues)
+void configJson(const char **keys, int count, const String **outvalues)
 {
     // put your setup code here, to run once:
     //clean FS, for testing
@@ -45,8 +45,9 @@ void configJson(const char **keys, int count, const char **outvalues)
 
                     for (int i = 0; i < count; i++)
                     {
-                        const char *value = json[*keys[i]];
-                        outvalues[i] = value;
+                        const char *value = json[keys[i]];
+                        String* v = new String(value);
+                        outvalues[i] = v;
                     }
                 }
                 else
