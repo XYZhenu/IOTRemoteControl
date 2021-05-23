@@ -23,16 +23,16 @@ void mcuSetup()
 
 void processYpwm(int pwm)
 {
-  int speed = map(pwm, 0, 100, 0, 1024); 
+  int speed = map(pwm, 0, 100, 0, 512); 
 #ifdef NODEMCU
   if (pwm > 25)
   {
-    analogWrite(nodemcuA1, speed);
+    analogWrite(nodemcuA1, speed+512);
     digitalWrite(nodemcuA2, LOW);
   }
   else if (pwm < -25)
   {
-    analogWrite(nodemcuA1, -speed);
+    analogWrite(nodemcuA1, -speed+512);
     digitalWrite(nodemcuA2, HIGH);
   }
   else
@@ -45,12 +45,12 @@ void processYpwm(int pwm)
 void processXpwm(int pwm)
 {
 #ifdef NODEMCU
-  if (pwm > 25)
+  if (pwm > 5)
   {
     digitalWrite(nodemcuB1, HIGH);
     digitalWrite(nodemcuB2, HIGH);
   }
-  else if (pwm < -25)
+  else if (pwm < -5)
   {
     digitalWrite(nodemcuB1, HIGH);
     digitalWrite(nodemcuB2, LOW);
