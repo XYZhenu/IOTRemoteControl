@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#define NODEMCU;
 int nodemcuD1 = 5;
 int nodemcuD2 = 4;
 int nodemcuD3 = 0;
@@ -24,16 +23,21 @@ void mcuSetup()
 
 void processYpwm(int pwm)
 {
+  int speed = map(pwm, 0, 100, 0, 1024); 
 #ifdef NODEMCU
-  if (pwm > 0)
+  if (pwm > 25)
   {
-    digitalWrite(nodemcuA1, HIGH);
+    analogWrite(nodemcuA1, speed);
     digitalWrite(nodemcuA2, LOW);
+  }
+  else if (pwm < -25)
+  {
+    analogWrite(nodemcuA1, -speed);
+    digitalWrite(nodemcuA2, HIGH);
   }
   else
   {
-    digitalWrite(nodemcuA1, HIGH);
-    digitalWrite(nodemcuA2, HIGH);
+    digitalWrite(nodemcuA1, LOW);
   }
 #endif
 }
@@ -41,15 +45,19 @@ void processYpwm(int pwm)
 void processXpwm(int pwm)
 {
 #ifdef NODEMCU
-  if (pwm > 0)
+  if (pwm > 25)
   {
     digitalWrite(nodemcuB1, HIGH);
     digitalWrite(nodemcuB2, HIGH);
   }
-  else
+  else if (pwm < -25)
   {
     digitalWrite(nodemcuB1, HIGH);
     digitalWrite(nodemcuB2, LOW);
+  }
+  else
+  {
+    digitalWrite(nodemcuB1, LOW);
   }
 #endif
 }
@@ -58,8 +66,6 @@ void reset()
 {
 #ifdef NODEMCU
   digitalWrite(nodemcuA1, LOW);
-  digitalWrite(nodemcuA2, LOW);
   digitalWrite(nodemcuB1, LOW);
-  digitalWrite(nodemcuB2, LOW);
 #endif
 }
