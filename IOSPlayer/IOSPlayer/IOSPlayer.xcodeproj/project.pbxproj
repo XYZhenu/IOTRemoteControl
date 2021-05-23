@@ -17,6 +17,7 @@
 		AC240AA725EE6BB0009875C8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC240AA625EE6BB0009875C8 /* PlayerViewController.swift */; };
 		AC240CE725EE7270009875C8 /* MediaPlayerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC240CE625EE7270009875C8 /* MediaPlayerKit.framework */; };
 		AC240CE825EE7271009875C8 /* MediaPlayerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC240CE625EE7270009875C8 /* MediaPlayerKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC3BF7A1261F461700D43077 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3BF7A0261F461700D43077 /* SettingVC.swift */; };
 		F1CA0ACCD82C38ED4BBB8286 /* Pods_IOSPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08E92B1D07BB0F9477F2BEA2 /* Pods_IOSPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		8EBD665EC767F616C4F1BFFA /* Pods-IOSPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSPlayer.release.xcconfig"; path = "Target Support Files/Pods-IOSPlayer/Pods-IOSPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		AC240AA625EE6BB0009875C8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		AC240CE625EE7270009875C8 /* MediaPlayerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MediaPlayerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3BF7A0261F461700D43077 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		D24B65C9DE0C8E90F61ACFC0 /* Pods-IOSPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSPlayer.debug.xcconfig"; path = "Target Support Files/Pods-IOSPlayer/Pods-IOSPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 			children = (
 				1980010A25EDE0C100BA4C76 /* AppDelegate.swift */,
 				AC240AA625EE6BB0009875C8 /* PlayerViewController.swift */,
+				AC3BF7A0261F461700D43077 /* SettingVC.swift */,
 				1980012325EE36DA00BA4C76 /* Main.storyboard */,
 				1980011025EDE0C300BA4C76 /* Assets.xcassets */,
 				1980011525EDE0C300BA4C76 /* LaunchScreen.storyboard */,
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1980010B25EDE0C100BA4C76 /* AppDelegate.swift in Sources */,
+				AC3BF7A1261F461700D43077 /* SettingVC.swift in Sources */,
 				AC240AA725EE6BB0009875C8 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

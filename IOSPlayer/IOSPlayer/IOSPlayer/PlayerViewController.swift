@@ -10,11 +10,18 @@ import UIKit
 import MediaPlayerKit
 import XYRemoterKit
 class PlayerViewController: UIViewController {
+    var mqttaddress:String?
+    var videoaddress:String?
+    
     @IBOutlet weak var player: StreamPlayer!
     @IBOutlet weak var controlPannel: ControlPannelView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        controlPannel.mqtt = MQTTWrapper()
-        player.play("rtsp://192.168.1.13/test/test")
+        if let add = mqttaddress {
+            controlPannel.mqtt = MQTTWrapper(host: add)
+        }
+        if let add = videoaddress {
+            player.play(add)
+        }
     }
 }
