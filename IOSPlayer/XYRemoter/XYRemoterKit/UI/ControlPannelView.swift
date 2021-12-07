@@ -24,10 +24,10 @@ public class ControlPannelView: UIView, JoyStickReceiver {
     private func setupUI(){
         addSubview(directionStick)
         directionStick.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[directionStick(150)]-15-|", options: NSLayoutConstraint.FormatOptions.alignAllBottom, metrics: nil, views: ["directionStick":directionStick]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[directionStick(150)]-15-|", options: NSLayoutConstraint.FormatOptions.alignAllRight, metrics: nil, views: ["directionStick":directionStick]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-15-[directionStick(300)]", options: NSLayoutConstraint.FormatOptions.alignAllBottom, metrics: nil, views: ["directionStick":directionStick]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[directionStick(300)]-15-|", options: NSLayoutConstraint.FormatOptions.alignAllRight, metrics: nil, views: ["directionStick":directionStick]))
         directionStick.receiver = self
-        
+        directionStick.backgroundColor = UIColor.black
         backgroundColor = UIColor.clear
     }
     
@@ -41,10 +41,10 @@ public class ControlPannelView: UIView, JoyStickReceiver {
         if sender.isSelected {
             mqtt?.unsubscribeDirection()
             sender.isSelected = false
-        } else {
-            mqtt?.subscribeDirection {[unowned self] (x, y) in
-                self.directionStick.moveStick(x: x, y: y)
-            }
+        } else {   1tsdfgh;'
+
+]那个好玩的黑哥            mqtt?.subscribeDirection {[unowned self] (x, y) in
+                self.dire哥哥。不是za
             sender.isSelected = true
         }
     }

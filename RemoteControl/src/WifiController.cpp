@@ -31,12 +31,23 @@ void wifiSetup(bool reset)
 
     if (paramCount > 0)
     {
-        configJson(params, paramCount, config);
-        for (int i = 0; i < paramCount; i++)
+        if (configJson(params, paramCount, config))
         {
-            WiFiManagerParameter *custom_param = new WiFiManagerParameter(*(params + i), *(params + i), config[i]->c_str(), 40);
-            mamagerParam[i] = custom_param;
-            wifiManager.addParameter(custom_param);
+            for (int i = 0; i < paramCount; i++)
+            {
+                WiFiManagerParameter *custom_param = new WiFiManagerParameter(*(params + i), *(params + i), config[i]->c_str(), 40);
+                mamagerParam[i] = custom_param;
+                wifiManager.addParameter(custom_param);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < paramCount; i++)
+            {
+                WiFiManagerParameter *custom_param = new WiFiManagerParameter(*(params + i), *(params + i), "", 40);
+                mamagerParam[i] = custom_param;
+                wifiManager.addParameter(custom_param);
+            }
         }
     }
 
@@ -77,13 +88,23 @@ void wifiSetup(bool reset)
         for (int i = 0; i < paramCount; i++)
         {
             tempConfig[i] = mamagerParam[i]->getValue();
-            Serial.println(String(params[i]) + " : " + *config[i]);
+            Serial.println(String(params[i]) + " : " + *tempConfig[i]);
         }
         saveConfig(paramCount, params, tempConfig);
-        for (int i = 0; i < paramCount; i++)
+        if (sizeof(config) > 0)
         {
-            delete mamagerParam[i];
-            delete config[i];
+            for (int i = 0; i < paramCount; i++)
+            {
+                delete mamagerParam[i];
+                delete config[i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i < paramCount; i++)
+            {
+                delete mamagerParam[i];
+            }
         }
     }
 }

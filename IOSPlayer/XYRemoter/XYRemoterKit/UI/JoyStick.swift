@@ -81,8 +81,14 @@ class JoyStickView: UIView {
         resetStick()
     }
     
-    private func positionCaculate(point:CGPoint) -> (CGPoint, CGPoint) {
-        
+    var lastX:CGFloat = 0
+    var lastY:CGFloat = 0
+    
+    private func positionCaculate(point:CGPoint) -> (CGPoint, CGPoint)? {
+        if fabsf(Float(lastX-point.x))<2 && fabsf(Float(lastY-point.y))<2  {
+            return nil
+        }
+
         let centrex = self.frame.size.width / 2;          //圆心X
         let centrey = self.frame.size.height / 2;         //圆心Y
         let radius = self.frame.size.width / 2;           //半径
@@ -108,9 +114,11 @@ class JoyStickView: UIView {
     }
     
     weak var receiver: JoyStickReceiver?
-    private func updateStick(location: (position:CGPoint, rate:CGPoint)) {
-        stickPoint.center = location.position
-        receiver?.stickMove(stick: self, x: Float(location.rate.x), y: Float(location.rate.y))
+    
+    private func updateStick(location: (position:CGPoint, rate:CGPoint)?) {
+        guard let loc = location else { return }
+        stickPoint.center = loc.position
+        receiver?.stickMove(stick: self, x: Float(loc.rate.x), y: Float(loc.rate.y))
     }
     private func resetStick() {
         self.receiver?.stickMove(stick: self, x: 0, y: 0)

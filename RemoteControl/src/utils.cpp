@@ -2,7 +2,7 @@
 #include <FS.h> //this needs to be first, or it all crashes and burns...
 #include <ArduinoJson.h>
 using namespace std;
-void configJson(const char **keys, int count, const String **outvalues)
+bool configJson(const char **keys, int count, const String **outvalues)
 {
     // put your setup code here, to run once:
     //clean FS, for testing
@@ -55,6 +55,7 @@ void configJson(const char **keys, int count, const String **outvalues)
                     Serial.println("failed to load json config");
                 }
                 configFile.close();
+                return true;
             }
         }
     }
@@ -62,6 +63,7 @@ void configJson(const char **keys, int count, const String **outvalues)
     {
         Serial.println("failed to mount FS");
     }
+    return false;
 }
 
 void saveConfig(int count, const char **keys, const char **values)

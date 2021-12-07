@@ -32,7 +32,12 @@ bool connect()
   Serial.println("mqtt connecting...");
   String const *config[4];
   const char *keys[4] = {"mqtt_server", "mqtt_clientid", "mqtt_username", "mqtt_password"};
-  configJson(keys, 4, config);
+  bool haveconfig = configJson(keys, 4, config);
+  if (!haveconfig)
+  {
+    return false;
+  }
+  
   client->begin(config[0]->c_str(), net);
 
   int retry = 3;
