@@ -25,6 +25,16 @@ void messageReceived(String &topic, String &payload)
     processXpwm(x);
     processYpwm(y);
   }
+  else if (topic == "adjust")
+  {
+    int index = payload.indexOf(",");
+    String xstring = payload.substring(0, index);
+    String ystring = payload.substring(index + 1, (int)payload.length());
+    int x = xstring.toInt();
+    int y = ystring.toInt();
+    adjustXstep(x);
+    adjustYstep(y);
+  }
 }
 
 bool connect()
@@ -55,6 +65,7 @@ bool connect()
   {
     client->subscribe("reset", 1);
     client->subscribe("direction", 0);
+    client->subscribe("adjust", 1);
     Serial.println("mqtt connected!");
     return true;
   }
@@ -76,4 +87,5 @@ void mqttLoop()
   {
     connect();
   }
+  mcuLoop();
 }
