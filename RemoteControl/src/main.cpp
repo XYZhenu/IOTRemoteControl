@@ -2,28 +2,29 @@
 #include <Ticker.h>
 #include "mqttController.h"
 #include "WifiController.h"
-Ticker ticker;
+
 void tick()
 {
   //toggle state
   int state = digitalRead(LED_BUILTIN); // get the current state of GPIO1 pin
   digitalWrite(LED_BUILTIN, !state);    // set pin to the opposite state
 }
+Ticker ticker(tick, 1000, 0, MILLIS);
 #define FLASH_PIN 0
 
 #define TRIGGER_PIN 10
 
 void resetConnection(bool reset)
 {
-  ticker.attach(1, tick);
+  ticker.interval(1000);
   wifiSetup(reset);
-  ticker.attach(0.5, tick);
+  ticker.interval(500);
   while (!mqttSetup())
   {
     Serial.println("Restart configuration!");
     wifiSetup(true);
   }
-  ticker.detach();
+  ticker.pause();
   digitalWrite(LED_BUILTIN, LOW);
 }
 void setup()

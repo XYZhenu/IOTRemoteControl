@@ -10,10 +10,17 @@ WiFiClient net;
 
 void messageReceived(String &topic, String &payload)
 {
-  Serial.println("incoming: " + topic + " - " + payload);
-  if (topic == "reset" && payload == "direction")
+  Serial.println("\nincoming: " + topic + " - " + payload);
+  if (topic == "reset")
   {
-    reset();
+    if (payload == "direction")
+    {
+      reset();
+    }
+    else if (payload == "servo") 
+    {
+      resetServo();
+    }
   }
   else if (topic == "direction")
   {

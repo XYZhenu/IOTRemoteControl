@@ -78,6 +78,7 @@ void reset()
 }
 void adjustXstep(int step) {}
 void adjustYstep(int step) {}
+void resetServo() {}
 void mcuLoop() {}
 #endif
 
@@ -88,12 +89,12 @@ void mcuLoop() {}
 #ifdef ESP8266
 #include <Ticker.h>
 
-int driv1A1 = 14;
-int driv1A2 = 12;
-int driv1B1 = 13;
-int driv1B2 = 10;
+int driv1A1 = 16;
+int driv1A2 = 14;
+int driv1B1 = 12;
+int driv1B2 = 13;
 int drive[4] = {driv1A1,driv1A2,driv1B1,driv1B2};
-int driveStep = 1;
+int driveStep = 0;
 bool driveForward = true;
 void driveTick();
 Ticker driveTimer(driveTick, 1000, 0, MILLIS);
@@ -101,12 +102,14 @@ Ticker driveTimer(driveTick, 1000, 0, MILLIS);
 int servoA1 = 5;
 int servoA2 = 4;
 int servoB1 = 0;
-int servoB2 = 15;
+int servoB2 = 2;
 int servo[4] = {servoA1,servoA2,servoB1,servoB2};
-int servoStep = 1;
+int servoStep = 0;
 int servoTarget = 0;
 void servoTick();
 Ticker servoTimer(servoTick, 10, 0, MILLIS);
+
+void resetPins(int pins[10]);
 
 void tick1(int pins[4]){
   digitalWrite(pins[0], HIGH);
@@ -159,11 +162,12 @@ void driveTick()
 void servoTick()
 {
   if (servoTarget == servoStep) {
+    Serial.printf("\nservoTick stop %d",servoStep);
     servoTimer.pause();
     resetPins(servo);
     return;
   }
-  tickOne(servo, &servoStep, servoTarget < servoStep);
+  tickOne(servo, &servoStep, servoTarget > servoStep);
 }
 
 void resetPins(int pins[4]){
@@ -217,7 +221,7 @@ void processYpwm(int pwm)
 void processXpwm(int pwm)
 {
   servoTarget = pwm*4;
-  Serial.println(servoTarget);
+  Serial.printf("\nservoTarget %d",servoTarget);
   if (pwm > 15)
   {
     servoTimer.resume();
@@ -279,8 +283,15 @@ void reset()
   servoTimer.resume();
 }
 
+void resetServo() 
+{
+  servoTimer.pause();
+  servoStep = 0;
+}
+
 void mcuLoop() 
 {
   driveTimer.update();
+  servoTimer.update();
 }
 #endif
